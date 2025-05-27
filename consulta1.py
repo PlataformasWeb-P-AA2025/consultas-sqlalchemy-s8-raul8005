@@ -6,9 +6,11 @@ from sqlalchemy.orm import sessionmaker
 #from clases import engine, Departamento, Instructor, Curso, Estudiante, Inscripcion, Tarea, Entrega
 from clases import *
 
+# crear una sesion
 Session = sessionmaker(bind=engine)
 session = Session()
 
+# hacer join entre tablas para llegar al departamento Arte desde entrega
 entregas_arte = (
     session.query(Entrega)
     .join(Entrega.tarea)
