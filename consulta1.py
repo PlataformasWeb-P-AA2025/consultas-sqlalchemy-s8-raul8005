@@ -14,7 +14,6 @@ entregas_arte = (
     .join(Entrega.tarea)
     .join(Tarea.curso)
     .join(Curso.departamento)
-    .join(Curso.instructor)
     .filter(Departamento.nombre == 'Arte').all()
 )
 
