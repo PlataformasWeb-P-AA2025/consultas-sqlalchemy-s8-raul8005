@@ -26,8 +26,7 @@ dep_notas = (
 
 #Presentar los departamentos
 
-
 print("Departamentos que tienen notas menores o iguales a 0.3")
 for dep, numero_cursos in dep_notas:
     print(f"Departamento: {dep}")
-    print(f"Número de cursos: {numero_cursos}")
+    print(f"Número de cursos: {numero_cursos}")6
