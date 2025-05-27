@@ -12,10 +12,10 @@ session = Session()
 # Join a las otras tablas para encontrar las calificaciones
 dep_notas = (
     session.query(
-        Departamento.nombre,
-        func.count(Curso.id).label("numero_cursos") # uso la funcion count para contar loscursos de los departamentos, tomando el id de los sursos.
-    )
-    .join(Departamento.cursos)     
+        Departamento.nombre)
+    .join(Departamento.cursos,
+    	func.count(Curso.id).label("numero_cursos") # uso la funcion count para contar loscursos de los departamentos, tomando el id de los sursos.
+    )     
     .join(Curso.tareas)            
     .join(Tarea.entregas)          
     .filter(Entrega.calificacion <= 0.3)
@@ -25,9 +25,9 @@ dep_notas = (
 
 
 #Presentar los departamentos
-print("Departamentos que tengas notas menores o iguales a 0.3")
 
+
+print("Departamentos que tienen notas menores o iguales a 0.3")
 for dep, numero_cursos in dep_notas:
     print(f"Departamento: {dep}")
     print(f"Número de cursos: {numero_cursos}")
-    print("---------------------")
